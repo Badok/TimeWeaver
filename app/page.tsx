@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SigninButton } from "./components/signin-button";
 
 export default function Home() {
   return (
@@ -49,6 +50,7 @@ export default function Home() {
           >
             Read our docs
           </a>
+            <SigninButton />
         </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
