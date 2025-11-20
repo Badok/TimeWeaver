@@ -1,26 +1,201 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* --------------------------------------------
+   🌈 TimeWeaver Design Tokens
+   Compatible with Tailwind CSS v4 (no config file)
+   -------------------------------------------- */
+
+@theme {
+    /* ===============================
+       🎨 Colors
+       =============================== */
+    --color-cannoli-cream: oklch(0.95 0.02 96);
+    --color-cream-tan: oklch(0.85 0.04 49);
+    --color-safari: oklch(0.74 0.04 76);
+    --color-baltic-amber: oklch(0.54 0.05 35);
+    --color-sirocco: oklch(0.72 0.06 49);
+    --color-chanterelle: oklch(0.64 0.04 52);
+    --color-mocha-mousse: oklch(0.61 0.07 41);
+    --color-chocolate-martini: oklch(0.41 0.03 30);
+
+    /* ===============================
+       🔠 Typography
+       =============================== */
+    --font-serif: "Sedan", serif;
+    --font-sans: "Arsenal", sans-serif;
+    --font-hand: "Shadows Into Light", cursive;
+    --font-mono: "Cutive Mono", monospace;
+
+    /* Font sizes (responsive scale) */
+    --text-hero: clamp(2.75rem, 6vw, 4.5rem);
+    --text-section: clamp(1.75rem, 3vw, 2.5rem);
+    --text-sub: clamp(1.125rem, 2vw, 1.5rem);
+    --text-body: 1rem;
+    --text-small: 0.875rem;
+
+    /* Line heights */
+    --leading-tight: 1.1;
+    --leading-normal: 1.4;
+    --leading-relaxed: 1.6;
+
+    /* ===============================
+       🧱 Layout
+       =============================== */
+    --container-max: 760px;
+    --radius-xl: 1.25rem;
+    --radius-2xl: 1.5rem;
+    --shadow-soft: 0 2px 30px rgba(0, 0, 0, 0.05);
+
+    /* ===============================
+       🧭 Motion
+       =============================== */
+    --ease-default: ease-in-out;
+    --duration-fast: 200ms;
+    --duration-normal: 400ms;
+    --duration-slow: 600ms;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* =============================================
+   🔠 Typography & Spacing System
+   ============================================= */
+
+/* Headings */
+h1, .h1 {
+    font-family: var(--font-serif);
+    font-size: var(--text-hero);
+    line-height: var(--leading-tight);
+    margin-block: 0 1rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+h2, .h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-section);
+    line-height: var(--leading-tight);
+    margin-block: 2rem 1rem;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+h3, .h3 {
+    font-family: var(--font-sans);
+    font-size: var(--text-sub);
+    line-height: var(--leading-normal);
+    margin-block: 1.75rem 0.75rem;
+}
+
+h4, .h4 {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: var(--leading-normal);
+    font-weight: 600;
+    margin-block: 1.25rem 0.5rem;
+}
+
+/* Paragraphs */
+p, .text-body {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--leading-relaxed);
+    margin-block: 1rem;
+
+}
+
+/* Small text, captions */
+small, .text-small {
+    font-size: var(--text-small);
+    line-height: var(--leading-normal);
+    opacity: 0.8;
+}
+
+/* Handwritten accents */
+.hand-accent {
+    font-family: var(--font-hand);
+    font-size: var(--text-sub);
+    line-height: var(--leading-tight);
+}
+
+/* Lists */
+ul, ol {
+    margin-block: 1rem;
+    padding-left: 1.25rem;
+    line-height: var(--leading-relaxed);
+}
+
+ul li + li,
+ol li + li {
+    margin-top: 0.25rem;
+}
+
+/* Blockquotes */
+blockquote {
+    font-family: var(--font-serif);
+    font-size: var(--text-sub);
+    line-height: var(--leading-relaxed);
+    margin-block: 2rem;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--color-sirocco);
+    opacity: 0.9;
+}
+
+/* =============================================
+   📏 Layout & Utility Classes
+   ============================================= */
+
+/* Containers */
+.container-readable {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+}
+
+/* Section padding */
+.section {
+    padding-block: 5rem;
+}
+.section-sm {
+    padding-block: 3rem;
+}
+.section-lg {
+    padding-block: 7rem;
+}
+
+/* Card styles */
+.card {
+    background-color: var(--color-cannoli-cream);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-soft);
+    padding: 2rem;
+}
+
+/* Gap utilities */
+.gap-xs { gap: 0.5rem; }
+.gap-sm { gap: 1rem; }
+.gap-md { gap: 1.5rem; }
+.gap-lg { gap: 2rem; }
+.gap-xl { gap: 3rem; }
+
+/* Font helpers */
+.font-serif { font-family: var(--font-serif); }
+.font-sans { font-family: var(--font-sans); }
+.font-hand { font-family: var(--font-hand); }
+.font-mono { font-family: var(--font-mono); }
+
+
+/* Hero animations */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes float-slow {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-25px); }
+    100% { transform: translateY(0px); }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
 }
