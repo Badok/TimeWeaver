@@ -1,0 +1,23 @@
+{
+	"name": "TimeWeaver - Next.js Fullstack",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"features": {
+		// Installs the GitHub CLI (optional but handy)
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"Prisma.prisma",
+				"esbenp.prettier-vscode",
+				"dbaeumer.vscode-eslint"
+			]
+		}
+	},
+	// Forward the Next.js port so you can see it in browser
+	"forwardPorts": [
+		3000
+	]
+}

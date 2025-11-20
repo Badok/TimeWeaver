@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: nextjs-app
+    image: mcr.microsoft.com/devcontainers/typescript-node:20
+    volumes:
+      - ../..:/workspaces:cached
+    # Keeps the container running so VS Code can attach
+    command: sleep infinity
+    # Connects app to the same network as the db
+    network_mode: service:db
+
+  db:
+    image: mariadb:10.11
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: UGlyYXRlbg==
+      MARIADB_DATABASE: timeweaver_db
+      MARIADB_USER: timeweaver
+      MARIADB_PASSWORD: ilSSs508
+    volumes:
+      - mariadb-data:/var/lib/mysql
+
+volumes:
+  mariadb-data:
